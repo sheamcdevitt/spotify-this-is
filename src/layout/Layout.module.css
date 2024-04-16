@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* This ensures that the container takes up at least the height of the viewport */
+}
+
+.content {
+  flex: 1; /* This makes sure that the content area takes up the remaining vertical space */
+}
+
+.footer {
+  margin-top: auto; /* This pushes the footer to the bottom of the container */
+}
