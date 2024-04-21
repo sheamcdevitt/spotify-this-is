@@ -15,7 +15,6 @@ export const Track = (props: TrackProps) => {
       sx={{
         display: 'flex',
         marginBottom: 4,
-
         transition: 'transform 0.2s',
         maxWidth: 500,
         '&:hover': {

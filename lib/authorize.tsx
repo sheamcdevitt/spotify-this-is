@@ -1,5 +1,4 @@
-const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
-const SECRET = process.env.SPOTIFY_CLIENT_SECRET;
+const SPOTIFY_CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
 const redirectUri = 'http://localhost:3000/callback';
 
 function generateRandomString(length: number): string {
@@ -46,7 +45,7 @@ export const authorize = async () => {
 
     const args = new URLSearchParams({
       response_type: 'code',
-      client_id: SPOTIFY_CLIENT_ID,
+      client_id: SPOTIFY_CLIENT_ID || '',
       scope: scope,
       redirect_uri: redirectUri,
       state: state,
@@ -58,12 +57,20 @@ export const authorize = async () => {
   });
 };
 
-export const getToken = async (code: string) => {
-  const codeVerifier = sessionStorage.getItem('code_verifier');
+type GetTokenOptions = {
+  code: string;
+  spotifyClientSecret: string;
+};
 
+export const getToken = async (options: GetTokenOptions) => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  const codeVerifier = sessionStorage.getItem('code_verifier');
   const body = new URLSearchParams({
     grant_type: 'authorization_code' || '',
-    code: code || '',
+    code: options.code || '',
     redirect_uri: redirectUri || '',
     client_id: SPOTIFY_CLIENT_ID || '',
     code_verifier: codeVerifier || '',
@@ -74,7 +81,9 @@ export const getToken = async (code: string) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: 'Basic ' + btoa(`${SPOTIFY_CLIENT_ID}:${SECRET}`),
+        Authorization:
+          'Basic ' +
+          btoa(`${SPOTIFY_CLIENT_ID}:${options.spotifyClientSecret}`),
       },
       body: body,
     });
