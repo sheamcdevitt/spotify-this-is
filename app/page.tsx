@@ -1,15 +1,11 @@
 import { Box, Button, Typography } from '@mui/material';
-import NextLink from 'next/link';
 import { getServerSession } from 'next-auth';
-import { redirect } from 'next/navigation';
-import { SignInButton } from '@/components/SignInButton';
+import NextLink from 'next/link';
+
+import { AuthButton } from '../components/AuthButton';
 
 export default async function Home() {
   const session = await getServerSession();
-
-  if (!session) {
-    redirect('/auth/signin');
-  }
 
   return (
     <Box sx={{ my: 4 }}>
@@ -20,7 +16,7 @@ export default async function Home() {
         <Button variant='contained' component={NextLink} href='/about'>
           Go to the about page
         </Button>
-        <SignInButton />
+        <AuthButton />
       </Box>
     </Box>
   );
