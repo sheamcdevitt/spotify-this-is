@@ -2,11 +2,8 @@ import { NextResponse } from 'next/server';
 
 const BASEURL = `https://api.spotify.com/v1`;
 
-// const token = sessionStorage.getItem('token');
-
 export const getUserTracks = async () => {
   let limit = 50;
-  console.log('token', process.env.SPOTIFY_CLIENT_ID);
 
   try {
     const response = await fetch(`${BASEURL}/me/tracks?limit=${limit}`, {
