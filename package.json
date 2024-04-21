@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "debug": "NODE_OPTIONS='--inspect' next dev"
   },
   "dependencies": {
     "@emotion/cache": "latest",
@@ -20,7 +21,8 @@
     "next": "latest",
     "next-auth": "^4.24.7",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-spotify-web-playback": "^0.14.4"
   },
   "devDependencies": {
     "@types/node": "latest",
