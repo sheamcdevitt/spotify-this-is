@@ -24,8 +24,8 @@ export default async function Tracks() {
           alignItems: 'center',
         }}
       >
-        <Typography variant='h4' component='h1' sx={{ mb: 2 }}>
-          Tracks
+        <Typography variant='h4' sx={{ mb: 2, fontWeight: 'bold' }}>
+          Your liked tracks
         </Typography>
         <Grid container spacing={2}>
           {tracks.map((track) => (
