@@ -14,7 +14,7 @@ export default function Card(theme: DefaultTheme) {
           '&:hover': {
             transform: 'scale(1.05)',
             cursor: 'pointer',
-            backgroundColor: colors.textSecondary,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
           },
         },
       },

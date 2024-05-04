@@ -1,17 +1,35 @@
-import * as React from 'react';
+'use client';
+
+import sdk from '@lib/spotify-instance';
+import { Grid } from '@mui/material';
+import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import { Track } from './Track';
-import { Grid } from '@mui/material';
+import * as React from 'react';
+import { Track, TrackProps } from './Track';
 
-export default async function Tracks() {
-  const tracks = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/tracks`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }).then((res) => res.json());
+export default function Tracks() {
+  const [tracks, setTracks] = React.useState<TrackProps[]>([]);
+
+  React.useEffect(() => {
+    (async () => {
+      const tracks = await sdk.currentUser.tracks.savedTracks();
+      console.log(tracks);
+
+      setTracks(
+        tracks?.items?.map((item) => {
+          const track = item.track;
+          return {
+            id: track.id,
+            name: track.name,
+            artist: track.artists[0].name,
+            album: track.album.name,
+            image: track.album.images[0].url,
+          };
+        })
+      );
+    })();
+  }, [sdk]);
 
   return (
     <Container maxWidth='lg'>

@@ -1,7 +1,7 @@
-import { Box, Card, CardContent, Typography, makeStyles } from '@mui/material';
+import { Box, Card, CardContent, Typography } from '@mui/material';
 import NextImage from 'next/image';
 
-type TrackProps = {
+export type TrackProps = {
   id: string;
   name: string;
   artist: string;
@@ -36,7 +36,7 @@ export const Track = (props: TrackProps) => {
           <Typography component='h5' variant='h5' noWrap>
             {props.name}
           </Typography>
-          <Typography variant='subtitle1' color='textSecondary'>
+          <Typography variant='subtitle1' color='white'>
             {props.artist} - {props.album}
           </Typography>
         </CardContent>
