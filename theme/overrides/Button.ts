@@ -1,26 +1,6 @@
 import { DefaultTheme } from '@mui/styles';
 import { colors } from '../colors';
 
-export const arkButtonVariant = (theme: DefaultTheme) => {
-  return {
-    props: { variant: 'ark' },
-    style: {
-      backgroundColor: theme.palette.secondary.main,
-      color: theme.palette.common.white,
-      '&:hover': {
-        backgroundColor: theme.palette.secondary.dark,
-      },
-      '&.Mui-disabled': {
-        color: theme.palette.common.white,
-        backgroundColor: theme.palette.secondary.light,
-      },
-      '&.MuiLoadingButton-loading .MuiLoadingButton-loadingIndicator': {
-        color: theme.palette.common.white,
-      },
-    },
-  };
-};
-
 export const buttonVariants = (theme: DefaultTheme) => {
   return [
     {
