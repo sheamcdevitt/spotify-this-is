@@ -4,6 +4,7 @@ import { Container, AppBar, Toolbar, Typography, Box } from '@mui/material';
 import { Footer } from './Footer';
 import styles from './Layout.module.css';
 import Link from 'next/link';
+import { colors } from '../theme/colors';
 
 type LayoutProps = {
   children: ReactNode;
@@ -11,11 +12,16 @@ type LayoutProps = {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <Box className={styles.container}>
+    <Box
+      className={styles.container}
+      sx={{
+        backgroundColor: colors.background,
+      }}
+    >
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
       </Head>
-      <AppBar position='static'>
+      <AppBar position='static' sx={{ backgroundColor: colors.black }}>
         <Toolbar>
           <Link
             href='/'
@@ -30,7 +36,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </Link>
         </Toolbar>
       </AppBar>
-      <Container className={styles.content}>{children}</Container>
+      <Container
+        className={styles.content}
+        sx={{
+          backgroundColor: colors.background,
+        }}
+      >
+        {children}
+      </Container>
       <footer className={styles.footer}>
         <Footer />
       </footer>

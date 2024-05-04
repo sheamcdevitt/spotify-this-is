@@ -20,7 +20,7 @@ export const Footer = () => {
         blur: '10px',
       }}
     >
-      <Typography variant='h4' color='text.secondary' align='center'>
+      <Typography variant='h4' align='center'>
         {'© 2024 Shéa McDevitt'}
       </Typography>
       <Box

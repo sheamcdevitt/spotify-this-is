@@ -1,5 +1,5 @@
 const SPOTIFY_CLIENT_ID = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID;
-const redirectUri = 'http://localhost:3000/callback';
+const redirectUri = 'http://localhost:4040/callback';
 
 function generateRandomString(length: number): string {
   let text = '';
