@@ -4,12 +4,16 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from '../theme/theme';
 import Layout from '../layout/Layout';
-import { AuthProvider } from './AuthProvider';
+import AuthSessionProvider from '@components/AuthSessionProvider';
+import { getServerSession } from 'next-auth';
+import authOptions from './api/auth/[...nextauth]/authOptions';
 
-export default function RootLayout(props: { children: React.ReactNode }) {
+export default async function RootLayout(props: { children: React.ReactNode }) {
+  const session = await getServerSession(authOptions);
+
   return (
-    <AuthProvider>
-      <html lang='en'>
+    <html lang='en'>
+      <AuthSessionProvider session={session}>
         <body>
           <AppRouterCacheProvider options={{ enableCssLayer: true }}>
             <ThemeProvider theme={theme}>
@@ -18,7 +22,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
             </ThemeProvider>
           </AppRouterCacheProvider>
         </body>
-      </html>
-    </AuthProvider>
+      </AuthSessionProvider>
+    </html>
   );
 }

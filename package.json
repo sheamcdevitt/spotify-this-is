@@ -17,14 +17,14 @@
     "@mui/material": "latest",
     "@mui/material-nextjs": "latest",
     "@mui/styles": "^5.15.15",
+    "@spotify/web-api-ts-sdk": "^1.2.0",
     "latest": "^0.2.0",
     "lodash": "^4.17.21",
-    "n": "^9.2.1",
+    "luxon": "^3.4.4",
     "next": "latest",
     "next-auth": "^4.24.7",
     "react": "latest",
     "react-dom": "latest",
-    "react-spotify-web-playback": "^0.14.4",
     "vercel": "^34.1.1"
   },
   "devDependencies": {
